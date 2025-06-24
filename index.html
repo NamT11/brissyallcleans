@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brissy All Clean</title>
+  <style>
+    :root {
+      --navy: #003F6B;
+      --teal: #009FA8;
+      --beige: #D9CFC7;
+      --dark-gray: #333333;
+      --light-gray: #f5f5f5;
+      --max-width: 800px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; color: var(--dark-gray); line-height: 1.6; background: var(--beige); }
+    header, section, footer { padding: 60px 20px; }
+    .container { max-width: var(--max-width); margin: 0 auto; }
+    /* Hero */
+    header { text-align: center; background: var(--light-gray); }
+    header img.logo { max-width: 200px; margin-bottom: 20px; }
+    header h1 { font-size: 2.5rem; color: var(--navy); margin-bottom: 10px; }
+    header p { font-size: 1.1rem; color: var(--teal); margin-bottom: 5px; }
+    header .slogan { font-size: 1.3rem; color: var(--navy); font-weight: bold; }
+    /* About */
+    #about { background: white; border-radius: 8px; margin-top: 40px; }
+    #about h2 { color: var(--navy); margin-bottom: 10px; }
+    #about p { margin-bottom: 20px; }
+    /* Services */
+    #services h2 { text-align: center; color: var(--navy); margin-bottom: 30px; }
+    .services-list { list-style: none; max-width: 600px; margin: 0 auto; }
+    .services-list li { padding-left: 1.5em; margin-bottom: 10px; position: relative; }
+    .services-list li:before { content: '✔'; color: var(--teal); position: absolute; left: 0; top: 0; }
+    /* Process Diagram */
+    #process { background: white; border-radius: 8px; margin-top: 40px; }
+    #process h2 { color: var(--navy); text-align: center; margin-bottom: 30px; }
+    .steps { display: flex; flex-wrap: wrap; justify-content: space-around; }
+    .step { width: 45%; margin-bottom: 20px; padding: 20px; background: var(--light-gray); border-radius: 6px; text-align: center; }
+    .step-number { font-size: 2rem; color: var(--teal); margin-bottom: 10px; }
+    @media (min-width: 700px) { .step { width: 22%; } }
+    /* Footer */
+    footer { text-align: center; background: var(--navy); color: white; margin-top: 40px; }
+    footer p { margin-bottom: 8px; }
+    footer a { color: var(--teal); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <!-- Save your logo as 'logo.png' alongside this file -->
+      <img class="logo" src="logo.png" alt="Brissy All Clean logo" />
+      <h1>Brissy All Clean</h1>
+      <p>End-of-Lease • Commercial • Residential</p>
+      <p class="slogan">YOU SET THE PRICE!</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        Brissy All Clean is a locally owned Brisbane cleaning company specialising in end-of-lease, commercial and residential services. Our fully insured, police-checked team uses eco-friendly, non-toxic products to deliver sparkling results every time. We offer flexible after-hours scheduling, a 100% satisfaction guarantee—and we’ll even beat the cheapest quote with our Price-Match Promise.
+      </p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <ul class="services-list">
+        <li>Bond & end-of-lease deep cleans</li>
+        <li>Office, retail & strata cleaning</li>
+        <li>Regular home cleaning</li>
+        <li>Carpet & upholstery steam-clean</li>
+        <li>Window & glass polishing</li>
+        <li>Move-in / move-out packages</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <p>Request a Free Quote & Price-Match</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <p>Flexible Scheduling</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <p>Professional Clean</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <p>100% Satisfaction Guaranteed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Call us: <a href="tel:04004871746">0404 871 746</a></p>
+      <p>Email: <a href="mailto:brissyallclean@gmail.com">brissyallclean@gmail.com</a></p>
+      <p>© 2025 Brissy All Clean. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
