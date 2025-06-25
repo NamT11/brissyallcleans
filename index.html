@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brissy All Clean</title>
-  <!-- Google Fonts -->
+  <!-- Google Fonts & Font Awesome Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1Cm..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --navy: #003F6B;
@@ -13,155 +14,109 @@
       --light-gray: #F5F5F5;
       --dark-gray: #333333;
       --white: #FFFFFF;
-      --max-width: 900px;
-      --transition: 0.3s ease;
+      --accent: #E6F7F7;
+      --max-width: 1000px;
+      --transition: 0.3s;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--dark-gray);
-      background: var(--light-gray);
-      line-height: 1.6;
-    }
+    body { font-family: 'Montserrat', sans-serif; color: var(--dark-gray); background: var(--light-gray); }
+    a { text-decoration: none; color: inherit; }
     .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
-    h1, h2, h3 { color: var(--navy); }
-    /* Header */
-    header {
-      background: var(--navy);
-      color: var(--white);
-      padding: 60px 0;
-      text-align: center;
-      position: relative;
-    }
-    header .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    header img.logo { max-width: 150px; margin-bottom: 20px; }
-    header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
-    header p.tagline { font-size: 1.2rem; font-weight: 600; color: var(--teal); margin-bottom: 5px; }
-    header p.slogan { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
-    /* Section styling */
-    section { padding: 60px 0; background: var(--white); }
-    section.alt { background: var(--light-gray); }
-    /* About */
-    #about p { margin-top: 20px; font-size: 1rem; }
+    ul { list-style: none; }
+    /* Sticky Navbar */
+    header { position: sticky; top: 0; background: var(--navy); z-index: 100; }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; }
+    .logo { max-width: 140px; z-index: 101; }
+    .navbar ul { display: flex; gap: 20px; }
+    .navbar a { color: var(--white); font-weight: 600; transition: color var(--transition); }
+    .navbar a:hover { color: var(--teal); }
+    .btn-primary { background: var(--teal); color: var(--navy); padding: 8px 16px; border-radius: 4px; font-weight: 600; }
+    /* Hero Section */
+    .hero { position: relative; background: url('hero.jpg') center/cover no-repeat; height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,63,107,0.7); }
+    .hero-content { position: relative; color: var(--white); max-width: 80%; }
+    .hero-content h1 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; }
+    .hero-content .tagline { font-size: 1.2rem; margin-bottom: 5px; color: var(--teal); }
+    .hero-content .slogan { font-size: 1.5rem; letter-spacing: 1px; margin-bottom: 20px; }
+    .hero-content .btn-secondary { background: var(--white); color: var(--navy); padding: 12px 24px; border-radius: 6px; font-weight: 600; transition: background var(--transition); }
+    .hero-content .btn-secondary:hover { background: var(--accent); }
+    /* Sections */
+    section { padding: 60px 0; }
+    section.alt { background: var(--accent); }
+    h2 { text-align: center; font-size: 2rem; margin-bottom: 20px; color: var(--navy); }
+    /* Features */
+    .features { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
+    .feature { background: var(--white); padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform var(--transition); }
+    .feature:hover { transform: translateY(-5px); }
+    .feature i { font-size: 2rem; color: var(--teal); margin-bottom: 10px; }
+    .feature h3 { font-size: 1.1rem; margin-bottom: 8px; }
     /* Services */
-    #services .services-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-    #services .service {
-      background: var(--white);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: transform var(--transition);
-    }
-    #services .service:hover { transform: translateY(-5px); }
-    #services .service h3 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      color: var(--teal);
-    }
-    /* Process */
-    #process .steps {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 20px;
-      margin-top: 40px;
-    }
-    #process .step {
-      flex: 1 1 calc(25% - 20px);
-      background: var(--white);
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: box-shadow var(--transition);
-    }
-    #process .step:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    #process .step-number {
-      background: var(--teal);
-      color: var(--white);
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
+    .services-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 20px; }
+    /* Testimonials */
+    .testimonials { max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; }
+    .testimonial { background: var(--white); padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); flex: 1 1 calc(50% - 20px); }
+    .testimonial p { font-style: italic; margin-bottom: 10px; }
+    .testimonial .author { text-align: right; font-weight: 600; }
     /* Quote Form */
     #quote { text-align: center; }
-    #quote h2 { margin-bottom: 20px; }
-    #open-quote-form {
-      background: var(--teal);
-      color: var(--white);
-      border: none;
-      padding: 12px 30px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background var(--transition);
-    }
-    #open-quote-form:hover { background: darken(var(--teal),10%); }
-    #quote-form {
-      display: none;
-      margin: 0 auto;
-      max-width: 600px;
-      text-align: left;
-      margin-top: 20px;
-    }
+    #open-quote-form { background: var(--teal); color: var(--white); border: none; padding: 12px 30px; font-size: 1rem; font-weight: 600; border-radius: 6px; cursor: pointer; }
+    #quote-form { display: none; margin: 20px auto 0; max-width: 600px; background: var(--white); padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: left; }
     #quote-form label { display: block; margin-bottom: 15px; font-size: 0.9rem; }
-    #quote-form input,
-    #quote-form select,
-    #quote-form textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      margin-top: 5px;
-    }
-    #quote-form button { background: var(--navy); color: var(--white); padding: 12px 25px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
+    #quote-form input, #quote-form select, #quote-form textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+    #quote-form button { width: 100%; background: var(--navy); color: var(--white); padding: 12px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
     /* Footer */
     footer { background: var(--navy); color: var(--white); text-align: center; padding: 40px 20px; }
     footer p { margin-bottom: 10px; font-size: 0.9rem; }
-    footer a { color: var(--teal); text-decoration: none; }
+    footer a { color: var(--teal); }
   </style>
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="container nav-container">
       <img class="logo" src="logo.png" alt="Brissy All Clean logo" />
-      <h1>Brissy All Clean</h1>
-      <p class="tagline">End-of-Lease • Commercial • Residential</p>
-      <p class="slogan">YOU SET THE PRICE!</p>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#quote">Quote</a></li>
+        </ul>
+      </nav>
+      <a href="#quote" class="btn-primary">Get a Quote</a>
     </div>
   </header>
 
-  <section id="about" class="container">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Brissy All Clean</h1>
+      <p class="tagline">End-of-Lease • Commercial • Residential</p>
+      <p class="slogan">YOU SET THE PRICE!</p>
+      <a href="#quote" class="btn-secondary">Request Your Quote</a>
+    </div>
+  </section>
+
+  <section id="about" class="container alt">
     <h2>About Us</h2>
-    <p>
-      Locally owned and Brisbane-based, Brissy All Clean specialises in end-of-lease, commercial, and residential cleaning. Our fully insured, police-checked professionals use eco-friendly products to guarantee sparkling results—on your schedule and at your price.
-    </p>
+    <p>Locally Brisbane-owned, Brissy All Clean delivers top-tier end-of-lease, commercial, and residential cleaning. Our insured, police-checked team uses eco-friendly products to guarantee exceptional results—on your schedule and at your price.</p>
+  </section>
+
+  <section id="features" class="container">
+    <h2>Why Choose Us</h2>
+    <div class="features">
+      <div class="feature"><i class="fas fa-handshake"></i><h3>Price Match Promise</h3><p>We match or beat any competitor’s quote.</p></div>
+      <div class="feature"><i class="fas fa-clock"></i><h3>Flexible Scheduling</h3><p>Morning, evening or weekends—your choice.</p></div>
+      <div class="feature"><i class="fas fa-hands-helping"></i><h3>Trusted Professionals</h3><p>Insured, police-checked, and highly trained.</p></div>
+      <div class="feature"><i class="fas fa-leaf"></i><h3>Eco-Friendly</h3><p>Safe, non-toxic products for your family and pets.</p></div>
+    </div>
   </section>
 
   <section id="services" class="container alt">
     <h2>Our Services</h2>
     <div class="services-list">
-      <div class="service"><h3>Bond & End-of-Lease Cleans</h3><p>Ensure full bond return with our deep-clean specialists.</p></div>
-      <div class="service"><h3>Commercial Cleaning</h3><p>Offices, retail spaces & strata—professional standards every time.</p></div>
-      <div class="service"><h3>Residential Cleaning</h3><p>Regular home maintenance or one-off top-to-toe refresh.</p></div>
-      <div class="service"><h3>Carpet & Upholstery</h3><p>Steam-clean and restore carpets, rugs, and furnishings.</p></div>
-      <div class="service"><h3>Window Polishing</h3><p>Streak-free glass for bright, clear views.</p></div>
-      <div class="service"><h3>Move-In/Move-Out</h3><p>Comprehensive packages for smooth transitions.</p></div>
+      <div class="service"><h3>Bond & End-of-Lease Cleans</h3><p>Ensure full bond return with specialist deep-cleans.</p></div>
+      <div class="service"><h3>Commercial Cleaning</h3><p>Professional upkeep for offices, retail & strata.</p></div>
+      <div class="service"><h3>Residential Cleaning</h3><p>Regular or one-off home refresh services.</p></div>
+      <div class="service"><h3>Carpet & Upholstery</h3><p>Steam-clean restoration for carpets and furnishings.</p></div>
     </div>
   </section>
 
@@ -171,11 +126,19 @@
       <div class="step"><div class="step-number">1</div><h3>Get a Quote</h3></div>
       <div class="step"><div class="step-number">2</div><h3>We Match Your Price</h3></div>
       <div class="step"><div class="step-number">3</div><h3>Choose Your Time</h3></div>
-      <div class="step"><div class="step-number">4</div><h3>Enjoy a Clean Home</h3></div>
+      <div class="step"><div class="step-number">4</div><h3>Enjoy a Clean Space</h3></div>
     </div>
   </section>
 
-  <section id="quote" class="container alt">
+  <section id="testimonials" class="container alt">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial"><p>“Brissy All Clean gave me back my bond in full—best service ever!”</p><div class="author">– Sarah B.</div></div>
+      <div class="testimonial"><p>“The team was punctual, professional, and thorough.”</p><div class="author">– Mark T.</div></div>
+    </div>
+  </section>
+
+  <section id="quote" class="container">
     <h2>Request Your Quote</h2>
     <button id="open-quote-form">Request a Quote</button>
     <form id="quote-form" action="https://formspree.io/f/mrbkoeyj" method="POST">
@@ -188,7 +151,6 @@
         <option>Residential Cleaning</option>
         <option>Carpet & Upholstery</option>
         <option>Window Polishing</option>
-        <option>Move-In/Out Package</option>
       </select></label>
       <label>Details <textarea name="message" rows="4"></textarea></label>
       <button type="submit">Submit</button>
@@ -197,9 +159,8 @@
 
   <footer>
     <div class="container">
-      <p>Call us: <a href="tel:04004871746">0404 871 746</a></p>
-      <p>Email: <a href="mailto:brissyallclean@gmail.com">brissyallclean@gmail.com</a></p>
-      <p>© 2025 Brissy All Clean. All Rights Reserved.</p>
+      <p>Call us: <a href="tel:04004871746">0404 871 746</a> | Email: <a href="mailto:brissyallclean@gmail.com">brissyallclean@gmail.com</a></p>
+      <p>© 2025 Brissy All Clean. All Rights Reserved.</p>
     </div>
   </footer>
 
