@@ -4,52 +4,135 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brissy All Clean</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy: #003F6B;
       --teal: #009FA8;
-      --beige: #D9CFC7;
+      --light-gray: #F5F5F5;
       --dark-gray: #333333;
-      --light-gray: #f5f5f5;
-      --max-width: 800px;
+      --white: #FFFFFF;
+      --max-width: 900px;
+      --transition: 0.3s ease;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; color: var(--dark-gray); line-height: 1.6; background: var(--beige); }
-    header, section, footer { padding: 60px 20px; }
-    .container { max-width: var(--max-width); margin: 0 auto; }
-    /* Hero */
-    header { text-align: center; background: var(--light-gray); }
-    header img.logo { max-width: 200px; margin-bottom: 20px; }
-    header h1 { font-size: 2.5rem; color: var(--navy); margin-bottom: 10px; }
-    header p { font-size: 1.1rem; color: var(--teal); margin-bottom: 5px; }
-    header .slogan { font-size: 1.3rem; color: var(--navy); font-weight: bold; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark-gray);
+      background: var(--light-gray);
+      line-height: 1.6;
+    }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+    h1, h2, h3 { color: var(--navy); }
+    /* Header */
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 60px 0;
+      text-align: center;
+      position: relative;
+    }
+    header .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header img.logo { max-width: 150px; margin-bottom: 20px; }
+    header h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+    header p.tagline { font-size: 1.2rem; font-weight: 600; color: var(--teal); margin-bottom: 5px; }
+    header p.slogan { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
+    /* Section styling */
+    section { padding: 60px 0; background: var(--white); }
+    section.alt { background: var(--light-gray); }
     /* About */
-    #about { background: white; border-radius: 8px; margin-top: 40px; }
-    #about h2 { color: var(--navy); margin-bottom: 10px; }
-    #about p { margin-bottom: 20px; }
+    #about p { margin-top: 20px; font-size: 1rem; }
     /* Services */
-    #services h2 { text-align: center; color: var(--navy); margin-bottom: 30px; }
-    .services-list { list-style: none; max-width: 600px; margin: 0 auto; }
-    .services-list li { padding-left: 1.5em; margin-bottom: 10px; position: relative; }
-    .services-list li:before { content: '✔'; color: var(--teal); position: absolute; left: 0; top: 0; }
-    /* Process Diagram */
-    #process { background: white; border-radius: 8px; margin-top: 40px; }
-    #process h2 { color: var(--navy); text-align: center; margin-bottom: 30px; }
-    .steps { display: flex; flex-wrap: wrap; justify-content: space-around; }
-    .step { width: 45%; margin-bottom: 20px; padding: 20px; background: var(--light-gray); border-radius: 6px; text-align: center; }
-    .step-number { font-size: 2rem; color: var(--teal); margin-bottom: 10px; }
-    @media (min-width: 700px) { .step { width: 22%; } }
+    #services .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    #services .service {
+      background: var(--white);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform var(--transition);
+    }
+    #services .service:hover { transform: translateY(-5px); }
+    #services .service h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--teal);
+    }
+    /* Process */
+    #process .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    #process .step {
+      flex: 1 1 calc(25% - 20px);
+      background: var(--white);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: box-shadow var(--transition);
+    }
+    #process .step:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    #process .step-number {
+      background: var(--teal);
+      color: var(--white);
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
     /* Quote Form */
-    #quote { background: white; border-radius: 8px; margin-top: 40px; }
-    #quote h2 { color: var(--navy); text-align: center; margin-bottom: 20px; }
-    #open-quote-form { display: block; margin: 0 auto 20px; padding: 10px 20px; font-size: 1rem; color: white; background: var(--teal); border: none; border-radius: 4px; cursor: pointer; }
-    #quote-form { max-width: 600px; margin: 0 auto; display: none; background: var(--light-gray); padding: 20px; border-radius: 6px; }
-    #quote-form label { display: block; margin-bottom: 10px; }
-    #quote-form input, #quote-form select, #quote-form textarea { width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #ccc; border-radius: 4px; }
-    #quote-form button[type="submit"] { margin-top: 10px; padding: 10px 20px; background: var(--navy); color: white; border: none; border-radius: 4px; cursor: pointer; }
+    #quote { text-align: center; }
+    #quote h2 { margin-bottom: 20px; }
+    #open-quote-form {
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    #open-quote-form:hover { background: darken(var(--teal),10%); }
+    #quote-form {
+      display: none;
+      margin: 0 auto;
+      max-width: 600px;
+      text-align: left;
+      margin-top: 20px;
+    }
+    #quote-form label { display: block; margin-bottom: 15px; font-size: 0.9rem; }
+    #quote-form input,
+    #quote-form select,
+    #quote-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+    #quote-form button { background: var(--navy); color: var(--white); padding: 12px 25px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
     /* Footer */
-    footer { text-align: center; background: var(--navy); color: white; margin-top: 40px; }
-    footer p { margin-bottom: 8px; }
+    footer { background: var(--navy); color: var(--white); text-align: center; padding: 40px 20px; }
+    footer p { margin-bottom: 10px; font-size: 0.9rem; }
     footer a { color: var(--teal); text-decoration: none; }
   </style>
 </head>
@@ -58,82 +141,72 @@
     <div class="container">
       <img class="logo" src="logo.png" alt="Brissy All Clean logo" />
       <h1>Brissy All Clean</h1>
-      <p>End-of-Lease • Commercial • Residential</p>
+      <p class="tagline">End-of-Lease • Commercial • Residential</p>
       <p class="slogan">YOU SET THE PRICE!</p>
     </div>
   </header>
 
-  <section id="about">
-    <div class="container">
-      <h2>About Us</h2>
-      <p>
-        Brissy All Clean is a locally owned Brisbane cleaning company specialising in end-of-lease, commercial and residential services. Our fully insured, police-checked team uses eco-friendly, non-toxic products to deliver sparkling results every time. We offer flexible after-hours scheduling, a 100% satisfaction guarantee—and we’ll even beat the cheapest quote with our Price-Match Promise.
-      </p>
+  <section id="about" class="container">
+    <h2>About Us</h2>
+    <p>
+      Locally owned and Brisbane-based, Brissy All Clean specialises in end-of-lease, commercial, and residential cleaning. Our fully insured, police-checked professionals use eco-friendly products to guarantee sparkling results—on your schedule and at your price.
+    </p>
+  </section>
+
+  <section id="services" class="container alt">
+    <h2>Our Services</h2>
+    <div class="services-list">
+      <div class="service"><h3>Bond & End-of-Lease Cleans</h3><p>Ensure full bond return with our deep-clean specialists.</p></div>
+      <div class="service"><h3>Commercial Cleaning</h3><p>Offices, retail spaces & strata—professional standards every time.</p></div>
+      <div class="service"><h3>Residential Cleaning</h3><p>Regular home maintenance or one-off top-to-toe refresh.</p></div>
+      <div class="service"><h3>Carpet & Upholstery</h3><p>Steam-clean and restore carpets, rugs, and furnishings.</p></div>
+      <div class="service"><h3>Window Polishing</h3><p>Streak-free glass for bright, clear views.</p></div>
+      <div class="service"><h3>Move-In/Move-Out</h3><p>Comprehensive packages for smooth transitions.</p></div>
     </div>
   </section>
 
-  <section id="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <ul class="services-list">
-        <li>Bond & end-of-lease deep cleans</li>
-        <li>Office, retail & strata cleaning</li>
-        <li>Regular home cleaning</li>
-        <li>Carpet & upholstery steam-clean</li>
-        <li>Window & glass polishing</li>
-        <li>Move-in / move-out packages</li>
-      </ul>
+  <section id="process" class="container">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step"><div class="step-number">1</div><h3>Get a Quote</h3></div>
+      <div class="step"><div class="step-number">2</div><h3>We Match Your Price</h3></div>
+      <div class="step"><div class="step-number">3</div><h3>Choose Your Time</h3></div>
+      <div class="step"><div class="step-number">4</div><h3>Enjoy a Clean Home</h3></div>
     </div>
   </section>
 
-  <section id="process">
-    <div class="container">
-      <h2>How It Works</h2>
-      <div class="steps">
-        <div class="step"><div class="step-number">1</div><p>Request a Free Quote & Price-Match</p></div>
-        <div class="step"><div class="step-number">2</div><p>Flexible Scheduling</p></div>
-        <div class="step"><div class="step-number">3</div><p>Professional Clean</p></div>
-        <div class="step"><div class="step-number">4</div><p>100% Satisfaction Guaranteed</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="quote">
-    <div class="container">
-      <h2>Get a Free Quote</h2>
-      <button id="open-quote-form">Get a Quote</button>
-      <form id="quote-form" action="https://formspree.io/f/mrbkoeyj" method="POST">
-        <label>Name:<input type="text" name="name" required /></label>
-        <label>Email:<input type="email" name="email" required /></label>
-        <label>Phone:<input type="tel" name="phone" required /></label>
-        <label>Service:
-          <select name="service">
-            <option>Bond & end-of-lease deep cleans</option>
-            <option>Office, retail & strata cleaning</option>
-            <option>Regular home cleaning</option>
-            <option>Carpet & upholstery steam-clean</option>
-            <option>Window & glass polishing</option>
-            <option>Move-in / move-out packages</option>
-          </select>
-        </label>
-        <label>Details:<textarea name="message" rows="4"></textarea></label>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+  <section id="quote" class="container alt">
+    <h2>Request Your Quote</h2>
+    <button id="open-quote-form">Request a Quote</button>
+    <form id="quote-form" action="https://formspree.io/f/mrbkoeyj" method="POST">
+      <label>Name <input type="text" name="name" required /></label>
+      <label>Email <input type="email" name="email" required /></label>
+      <label>Phone <input type="tel" name="phone" required /></label>
+      <label>Service <select name="service">
+        <option>Bond & End-of-Lease</option>
+        <option>Commercial Cleaning</option>
+        <option>Residential Cleaning</option>
+        <option>Carpet & Upholstery</option>
+        <option>Window Polishing</option>
+        <option>Move-In/Out Package</option>
+      </select></label>
+      <label>Details <textarea name="message" rows="4"></textarea></label>
+      <button type="submit">Submit</button>
+    </form>
   </section>
 
   <footer>
     <div class="container">
-      <p>Call us: <a href="tel:04004871746">0404 871 746</a></p>
+      <p>Call us: <a href="tel:04004871746">0404 871 746</a></p>
       <p>Email: <a href="mailto:brissyallclean@gmail.com">brissyallclean@gmail.com</a></p>
-      <p>© 2025 Brissy All Clean. All rights reserved.</p>
+      <p>© 2025 Brissy All Clean. All Rights Reserved.</p>
     </div>
   </footer>
 
   <script>
     document.getElementById('open-quote-form').addEventListener('click', function() {
       var form = document.getElementById('quote-form');
-      form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+      form.style.display = (form.style.display === 'block') ? 'none' : 'block';
     });
   </script>
 </body>
